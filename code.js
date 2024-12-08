@@ -17,8 +17,20 @@ function hasCycle(graph) {
     return cycles;
 }
 
-function cycleSearch(graph, start, visited) {
-    
-
+function cycleSearch(graph, start, prev) {
+    let vert = [];
+    vert.push(start);
+    while(vert.length > 0) {
+        let node = vert.shift();
+        if(prev[node]) {
+            return true;
+        }
+        prev[node] = true;
+        for(let nextNode of graph[node]) {
+            if(!prev[nextNode]) {
+                vert.push(nextNode);
+            }
+        }
+    }
     return false;
 }
