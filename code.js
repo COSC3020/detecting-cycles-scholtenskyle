@@ -21,12 +21,12 @@ function cycleSearch(graph, start, prev) {
     let vert = [];
     vert.push(start);
     while(vert.length > 0) {
-        let node = vert.shift();
-        if(prev[node]) {
+        let newNode = vert.shift();
+        if(prev[newNode]) {
             return true;
         }
-        prev[node] = true;
-        for(let nextNode of graph[node]) {
+        prev[newNode] = true;
+        for(let nextNode of graph[newNode]) {
             if(!prev[nextNode]) {
                 vert.push(nextNode);
             }
